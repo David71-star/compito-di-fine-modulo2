@@ -150,20 +150,29 @@ const jobs = [
 let lavoro = document.querySelector("#lavoro");
 let posizione = document.querySelector("#posizione");
 let lista = document.querySelector("#lista");
+let info = document.querySelector("h3");
 
 const cercaLavoroEPosizione = function () {
+  let lavoriTrovati = [];
   lista.innerHTML = "";
+  info.innerHTML = "";
+  //let numeroLavori = "";
   for (let i = 0; i < jobs.length; i++) {
     if (
       jobs[i].title
         .toLocaleLowerCase()
-        .includes(lavoro.value.toLocaleLowerCase()) &&
+        .includes(lavoro.value.toLocaleLowerCase()) ||
       jobs[i].location
         .toLocaleLowerCase()
         .includes(posizione.value.toLocaleLowerCase())
     ) {
+      lavoriTrovati.push(jobs[i]);
       lista.innerHTML += `<li><b>${jobs[i].title}  ${jobs[i].location}</b></li>`;
+      info.innerText = `${"Ci sono "} ${
+        lavoriTrovati.length
+      } ${" posti lavorativi disponibili:"}`;
     } else {
+      info.innerText = "Titolo o posizione inesistente";
     }
   }
 };
