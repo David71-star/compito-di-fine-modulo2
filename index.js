@@ -151,26 +151,30 @@ let lavoro = document.querySelector("#lavoro");
 let posizione = document.querySelector("#posizione");
 let lista = document.querySelector("#lista");
 let info = document.querySelector("h3");
-let errore = document.querySelector(".error");
 
 const cercaLavoroEPosizione = function () {
   let lavoriTrovati = [];
   lista.innerHTML = "";
   info.innerHTML = "";
-  for (let i = 0; i < jobs.length; i++) {
-    if (
-      jobs[i].title
-        .toLocaleLowerCase()
-        .includes(lavoro.value.toLocaleLowerCase()) &&
-      jobs[i].location
-        .toLocaleLowerCase()
-        .includes(posizione.value.toLocaleLowerCase())
-    ) {
-      lavoriTrovati.push(jobs[i]);
-      lista.innerHTML += `<li><b>${jobs[i].title}  ${jobs[i].location}</b></li>`;
-      info.innerText = `${"Ci sono "} ${
-        lavoriTrovati.length
-      } ${" posti lavorativi disponibili:"}`;
+  if (lavoro.value !== "" || posizione.value !== "") {
+    for (let i = 0; i < jobs.length; i++) {
+      if (
+        jobs[i].title
+          .toLocaleLowerCase()
+          .includes(lavoro.value.toLocaleLowerCase()) &&
+        jobs[i].location
+          .toLocaleLowerCase()
+          .includes(posizione.value.toLocaleLowerCase())
+      ) {
+        lavoriTrovati.push(jobs[i]);
+        lista.innerHTML += `<li><b>${jobs[i].title}  ${jobs[i].location}</b></li>`;
+        info.innerText = `${"Ci sono "} ${
+          lavoriTrovati.length
+        } ${" posti lavorativi disponibili:"}`;
+      }
     }
+  } else {
+    info.innerText =
+      "Inerisci un titolo o una posizione, per trovare un posto di lavoro.";
   }
 };
