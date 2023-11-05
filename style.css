@@ -38,5 +38,12 @@ button:hover{
     background-color: green;
     color: white;  
 }
+#lista li{
+    width: max-content;
+}
+#lista li:hover{
+    color: blue;
+    cursor: pointer;
+}
 
 
