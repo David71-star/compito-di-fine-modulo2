@@ -151,17 +151,17 @@ let lavoro = document.querySelector("#lavoro");
 let posizione = document.querySelector("#posizione");
 let lista = document.querySelector("#lista");
 let info = document.querySelector("h3");
+let errore = document.querySelector(".error");
 
 const cercaLavoroEPosizione = function () {
   let lavoriTrovati = [];
   lista.innerHTML = "";
   info.innerHTML = "";
-  //let numeroLavori = "";
   for (let i = 0; i < jobs.length; i++) {
     if (
       jobs[i].title
         .toLocaleLowerCase()
-        .includes(lavoro.value.toLocaleLowerCase()) ||
+        .includes(lavoro.value.toLocaleLowerCase()) &&
       jobs[i].location
         .toLocaleLowerCase()
         .includes(posizione.value.toLocaleLowerCase())
@@ -171,8 +171,6 @@ const cercaLavoroEPosizione = function () {
       info.innerText = `${"Ci sono "} ${
         lavoriTrovati.length
       } ${" posti lavorativi disponibili:"}`;
-    } else {
-      info.innerText = "Titolo o posizione inesistente";
     }
   }
 };
