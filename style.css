@@ -38,12 +38,23 @@ button:hover{
     background-color: green;
     color: white;  
 }
+.lavoriDue{
+    background-color: blueviolet;
+    width: max-content;
+    border-radius: 20px;
+    padding-block: 10px;
+    padding-right: 15px;
+    box-shadow: 0px 7px 10px rgb(78, 77, 77);
+
+}
 #lista li{
     width: max-content;
+
 }
 #lista li:hover{
-    color: blue;
+    color: white;
     cursor: pointer;
+    
 }
 
 
